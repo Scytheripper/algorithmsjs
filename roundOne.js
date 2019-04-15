@@ -7,7 +7,10 @@
  * @param {array} arr - An array of integers
  */
 function leadZeroes(arr) {
-
+    arr.sort(function (a, b){
+        return a - b;
+    });
+    return arr;
 }
 
 /**
@@ -18,7 +21,13 @@ function leadZeroes(arr) {
  * @param {array} arr - An array of data
  */
 function setter(arr) {
-
+    let newArr = [];
+    for(let i of arr) {
+        if(!newArr.includes(i)) {
+            newArr.push(i);
+        }
+    }
+    return newArr;
 }
 
 /**
@@ -32,7 +41,15 @@ function setter(arr) {
  * @param num
  */
 function isPrime(num) {
-
+    if(num === 1) {
+        return false;
+    }
+    for(let i = num-1; i > 1; i--) {
+        if (num % i === 0) {
+            return false;
+        }
+    } 
+    return true;
 }
 
 /**
@@ -44,7 +61,8 @@ function isPrime(num) {
  * @param divisor
  */
 function modulo(dividend, divisor) {
-
+    let quotient = Math.floor(dividend / divisor);
+    return dividend - quotient * divisor;
 }
 
 /**
@@ -57,7 +75,11 @@ function modulo(dividend, divisor) {
  * @param num
  */
 function nextFive(num) {
-
+    num = Math.ceil(num) + 1;
+    while(num % 5 != 0){
+        num++;
+    }
+    return num;
 }
 
 /**
@@ -69,7 +91,12 @@ function nextFive(num) {
  * @param obj
  */
 function osort(obj) {
-
+    let keys = Object.keys(obj).sort();
+    let newObj = {}
+    for(key of keys) {
+        newObj[key] = obj[key];
+    }
+    return newObj;
 }
 
 module.exports = {
